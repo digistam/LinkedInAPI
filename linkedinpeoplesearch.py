@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# © 2014, Mark Stam 
 import oauth2 as oauth
 import time
 from time import sleep
@@ -5,7 +8,7 @@ import linkedincredentials
 import sys
 import json
 
-keyword = "Blackberry"
+keyword = "pianist"
 url = "http://api.linkedin.com/v1/people-search:(people:(id,first-name,last-name,picture-url,headline,public-profile-url,last-modified-timestamp,positions:(company:(name,id)),location:(name,country:(code)),distance),num-results)?keywords={0}&format=json" .format(keyword)
 
 consumer = oauth.Consumer(
@@ -28,17 +31,17 @@ entity = []
 
 offset = 0
 while offset < int(amount) + 1:
-    nexturl = "http://api.linkedin.com/v1/people-search:(people:(id,first-name,last-name,picture-url,headline,public-profile-url,last-modified-timestamp,positions:(company:(name,id)),location:(name,country:(code)),distance),num-results)?keywords={0}&count=25&start=" + str(offset) + "&format=json" .format(keyword)
+    nexturl = "http://api.linkedin.com/v1/people-search:(people:(id,first-name,last-name,picture-url,headline,public-profile-url,last-modified-timestamp,positions:(company:(name,id)),location:(name,country:(code)),distance),num-results)?count=25&start=" + str(offset) + "&keywords={0}&format=json" .format(keyword)
     resp, nextcontent = client.request(nexturl)
     items = json.loads(nextcontent)
     entity = []
   
     for item in items['people']['values']:
         print 'id: ' + item['id']
-        print 'first name: ' + item['firstName']
+        print 'first name: ' + item['firstName'].encode('utf-8')
         print 'last name: ' + item['lastName'].encode('utf-8')
         try:
-            print 'headline: ' + item['headline']
+            print 'headline: ' + item['headline'].encode('utf-8')
         except KeyError:
             print 'no headline'
 #	try:

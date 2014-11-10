@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# © 2014, Mark Stam 
 import oauth2 as oauth
 import time
 from time import sleep
@@ -37,13 +40,13 @@ while offset < int(total) + 1:
         except KeyError:
             print 'no status'
         try:
-            print 'voornaam: ' + item['updateContent']['person']['firstName']
-            print 'achternaam: ' + item['updateContent']['person']['lastName']
-            print 'headline: ' + item['updateContent']['person']['headline']
+            print 'voornaam: ' + item['updateContent']['person']['firstName'].encode('utf-8')
+            print 'achternaam: ' + item['updateContent']['person']['lastName'].encode('utf-8')
+            print 'headline: ' + item['updateContent']['person']['headline'].encode('utf-8')
         except KeyError:
             print ''
         try:
-            print 'url: ' + item['updateContent']['person']['siteStandardProfileRequest']['url']
+            print 'url: ' + item['updateContent']['person']['siteStandardProfileRequest']['url'].encode('utf-8')
         except KeyError:
             print 'geen url informatie'
         print '----------------'

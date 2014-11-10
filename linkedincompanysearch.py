@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# © 2014, Mark Stam 
 import oauth2 as oauth
 import time
 from time import sleep
@@ -64,7 +67,7 @@ while offset < int(total) + 1:
         except KeyError:
             print 'no foundedYear'
         try:
-            print entity[i]['websiteUrl']
+            print entity[i]['websiteUrl'].encode('utf-8')
         except KeyError:
             print 'no websiteurl'
         try:
@@ -76,10 +79,10 @@ while offset < int(total) + 1:
         except KeyError:
             print 'no status'
         try:
-            print entity[i]['logoUrl']
+            print entity[i]['logoUrl'].encode('utf-8')
         except KeyError:
             print 'no logoUrl'
-        print entity[i]['universalName']
+        print entity[i]['universalName'].encode('utf-8')
         print '-----------------'
     offset += 25
     print 'de offset is: ' + str(offset)
