@@ -8,6 +8,26 @@ import linkedincredentials
 import sys
 import json
 
+## Hacker Summary:
+# https://api.linkedin.com/v1/people-search
+#   ?keywords=[space delimited keywords]
+#   &first-name=[first name]
+#   &last-name=[last name]
+#   &company-name=[company name]
+#   &current-company=[true|false]
+#   &title=[title]
+#   &current-title=[true|false]
+#   &school-name=[school name]
+#   &current-school=[true|false]
+#   &country-code=[country code]
+#   &postal-code=[postal code]
+#   &distance=[miles]
+#   &start=[number]
+#   &count=[1-25]
+#   &facet=[facet code, values]
+#   &facets=[facet codes]
+#   &sort=[connections|recommenders|distance|relevance]
+
 keyword = "pianist"
 url = "http://api.linkedin.com/v1/people-search:(people:(id,first-name,last-name,picture-url,headline,public-profile-url,last-modified-timestamp,positions:(company:(name,id)),location:(name,country:(code)),distance),num-results)?keywords={0}&format=json" .format(keyword)
 

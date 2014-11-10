@@ -1,7 +1,15 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# © 2014, Mark Stam 
 import oauth2 as oauth
 import time
+from time import sleep
+import datetime
+now = datetime.datetime.now()
+from time import sleep
 import linkedincredentials
 import sys
+import urllib2
 import json
 
 #try:
@@ -13,19 +21,15 @@ import json
     
 url = "http://api.linkedin.com/v1/companies/{id}/products:(id,name,type,creation-timestamp,logo-url,description,features,video:(title,url),product-deal:(title,url,text),sales-persons,num-recommendations,recommendations:(recommender,id,product-id,text,reply,timestamp,likes:(timestamp,person)),product-category,website-url,disclaimer)&format=json"
 
-consumer = oauth.Consumer(
-     key = linkedincredentials.CONSUMER_KEY,
-     secret = linkedincredentials.CONSUMER_SECRET)
+consumer = oauth.Consumer(key = linkedincredentials.CONSUMER_KEY,secret = linkedincredentials.CONSUMER_SECRET)
      
-token = oauth.Token(
-     key = linkedincredentials.USER_TOKEN, 
-     secret = linkedincredentials.USER_SECRET)
+token = oauth.Token(key = linkedincredentials.USER_TOKEN,secret = linkedincredentials.USER_SECRET)
 
 client = oauth.Client(consumer, token)
 
 resp, content = client.request(url)
 #print resp
-print content
+print content.encode('utf-8')
 
 #resp, content = client.request(url)
 

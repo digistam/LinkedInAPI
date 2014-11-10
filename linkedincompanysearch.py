@@ -12,6 +12,13 @@ import sys
 import urllib2
 import json
 
+## Hacker Summary:
+# https://api.linkedin.com/v1/company-search:(
+#    companies:(
+#      id,name,universal-name,website-url,industries,status,logo-url,blog-rss-url,twitter-id,employee-count-range,specialties,locations,description,stock-exchange,founded-year,end-year,num-followers)
+#      )
+#    ?keywords=
+
 keyword = "AGT"
 url = "http://api.linkedin.com/v1/company-search?keywords={0}&format=json" .format(keyword)
 
